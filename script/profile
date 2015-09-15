@@ -2,7 +2,7 @@
 
 function profile {
   local shome="$(unset CDPATH; cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
-  PATH="$shome/bin:$shome/exec:$shome/vendor/virtualenv/bin:$PATH"
+  PATH="$shome/bin:$shome/exec:$PATH"
 }
 
 profile
