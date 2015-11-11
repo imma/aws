@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+function main {
+  vagrant up "$@" --provider "$PROVIDER"
+}
+
+main "$@"

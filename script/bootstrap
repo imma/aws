@@ -7,7 +7,6 @@ function main {
   virtualenv vendor/virtualenv
   set +u; source vendor/virtualenv/bin/activate; set -u
   pip install -r requirements.txt
-  ln -nfs ../vendor/virtualenv/bin/aws bin/aws
 }
 
 main "$@"
