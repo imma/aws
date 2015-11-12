@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-export PROVIDER="aws"
+export VAGRANT_DEFAULT_PROVIDER="aws"
 
 function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
