@@ -7,7 +7,11 @@ function main {
 
   source "$shome/script/profile"
 
-  exec "$shome/vendor/virtualenv/bin/aws" "$@"
+  if [[ -x "$(which "parity-${1:-}" 2>&- || true)" ]]; then
+    exec parity "$@"
+  else
+    exec "$shome/vendor/virtualenv/bin/aws" "$@"
+  fi
 }
 
 source sub "$0" "$@"

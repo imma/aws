@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  PATH="$shome/bin:$shome/exec:$PATH"
+
+  local nm_region="$1"; shift
+  
+  export AWS_DEFAULT_PROFILE="$nm_region"
+
+  exec "$@"
+}
+
+source sub "$BASH_SOURCE" "$@"
