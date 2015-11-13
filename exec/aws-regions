@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  PATH="$shome/bin:$shome/exec:$PATH"
+
+  : ${AWS_DEFAULT_PROFILE:=us-west-1}
+
+  aws ec2 describe-regions | jq -r '.Regions | sort_by(.RegionName)[].RegionName'
+}
+
+source sub "$BASH_SOURCE" "$@"
