@@ -10,7 +10,7 @@ function main {
     export AWS_DEFAULT_PROFILE="$nm_region"
   fi
 
-  exec parity build "$@"
+  exec parity build ubuntu "$@"
 }
 
 source sub "$BASH_SOURCE" "$@"
