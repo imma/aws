@@ -23,15 +23,7 @@ function main {
   export EC2_INSTANCE_TYPE
 
   # source ami
-  local ap_northeast_1=ami-d886a1b6
-  local ap_southeast_1=ami-a17dbac2
-  local ap_southeast_2=ami-067d2365
-  local eu_central_1=ami-99cad9f5
-  local eu_west_1=ami-a317ced0
-  local sa_east_1=ami-ae44ffc2
-  local us_east_1=ami-f7136c9d
-  local us_west_1=ami-44b1de24
-  local us_west_2=ami-46a3b427
+  source "$shome/script/aws_ami"
 
   eval EC2_SOURCE_AMI="\$${AWS_DEFAULT_PROFILE//-/_}"
   export EC2_SOURCE_AMI
