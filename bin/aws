@@ -7,11 +7,20 @@ function main {
 
   source "$shome/script/profile"
 
-  if [[ -x "$(which "parity-${1:-}" 2>&- || true)" ]]; then
-    exec parity "$@"
-  else
-    exec "$shome/vendor/virtualenv/bin/aws" "$@"
-  fi
+  case "${1:-}" in
+    add)
+      local nm_action="$1"; shift
+      local nm_image="$1"; shift
+      exec parity "$nm_action" "$nm_image" "$nm_image" "$@"
+      ;;
+    *)
+      if [[ -x "$(which "parity-${1:-}" 2>&- || true)" ]]; then
+        exec parity "$@"
+      else
+        exec "$shome/vendor/virtualenv/bin/aws" "$@"
+      fi
+      ;;
+  esac
 }
 
 source sub "$0" "$@"
