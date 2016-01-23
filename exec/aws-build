@@ -8,8 +8,11 @@ function main {
   local nm_region=
   if [[ -n "${1:-}" ]]; then
     nm_region="$1"; shift
-    export AWS_DEFAULT_PROFILE="$nm_region"
+   AWS_DEFAULT_PROFILE="$nm_region"
   fi
+
+  export AWS_DEFAULT_PROFILE
+  export BASEBOX_SUFFIX="$AWS_DEFAULT_PROFILE"
 
   # target aminame
   EC2_TARGET_AMI_NAME="packer-${AWS_DEFAULT_PROFILE}-$(date +%s)"
