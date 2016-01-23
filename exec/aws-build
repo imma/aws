@@ -12,7 +12,7 @@ function main {
   fi
 
   export AWS_DEFAULT_PROFILE
-  export BASEBOX_SUFFIX="$AWS_DEFAULT_PROFILE"
+  export BASEBOX_SUFFIX="-$AWS_DEFAULT_PROFILE"
 
   # target aminame
   EC2_TARGET_AMI_NAME="packer-${AWS_DEFAULT_PROFILE}-$(date +%s)"
