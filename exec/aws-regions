@@ -4,9 +4,7 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  : ${AWS_DEFAULT_PROFILE:=us-west-1}
-
-  aws ec2 describe-regions | jq -r '.Regions | sort_by(.RegionName)[].RegionName'
+  aws ec2 describe-regions | jq -r '.Regions | sort_by(.RegionName)[].RegionName' | grep -v ap-northeast-2 # TODO until packer fixes this bug
 }
 
 source sub "$BASH_SOURCE" "$@"

@@ -21,7 +21,14 @@ function main {
   if [[ "$#" -gt 0 ]]; then
     EC2_INSTANCE_TYPE="$1"; shift
   else
-    EC2_INSTANCE_TYPE='c4.large'
+    case "$AWS_DEFAULT_PROFILE" in
+      sa-east-1)
+        EC2_INSTANCE_TYPE='c3.large'
+        ;;
+      *)
+        EC2_INSTANCE_TYPE='c4.large'
+        ;;
+    esac
   fi
   export EC2_INSTANCE_TYPE
 
