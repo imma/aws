@@ -9,4 +9,4 @@ Maintenance
 
 To get the latest Ubuntu Trusty ami for each region:
 
-    aws runmany 5 'echo local $1=$(aws with $1 aws ami)' | sort > script/aws_ami
+    aws runmany 5 'echo local ${1//-/_}=$(aws with $1 aws ami)' | sort > script/aws_ami
