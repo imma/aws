@@ -3,10 +3,9 @@
 set -efu
 
 function main {
-  mkdir -p vendor/virtualenv
-  virtualenv vendor/virtualenv
-  set +u; source vendor/virtualenv/bin/activate; set -u
-  pip install -r requirements.txt
+  pkg ensure textproc/py27-elementree textproc/py-elementtree
+
+  app compile virtualenv
 
   ln -nfs ../vendor/virtualenv/bin/saws bin/
 }
