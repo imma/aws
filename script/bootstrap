@@ -5,7 +5,7 @@ set -efu
 function main {
   pkg ensure textproc/py27-cElementTree textproc/py-cElementTree
 
-  app compile virtualenv
+  block compile virtualenv
 
   ln -nfs ../vendor/virtualenv/bin/saws bin/
 }
