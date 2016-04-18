@@ -9,9 +9,7 @@ function main {
               Name=state,Values=available \
               Name=architecture,Values=x86_64 \
               Name=block-device-mapping.volume-type,Values=gp2 \
-    | jq -r '.Images | sort_by(.CreationDate)[] | "\(.ImageId) \(.OwnerId) \(.Name) \(.VirtualizationType) \(.BlockDeviceMappings[0].Ebs.VolumeType) \(.Architecture) \(.CreationDate)"' \
-    | grep ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server | awk '{ ami=$1 } END { print ami }'
-
+    | jq -r --arg distro trusty '[.Images | sort_by(.CreationDate)[] | select(.Name | test("^ubuntu/images/")) | select(.Name | test("ubuntu-\($distro)"))] | last | .ImageId'
 }
 
 source sub "$BASH_SOURCE" "$@"
