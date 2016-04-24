@@ -3,7 +3,7 @@
 set -efu
 
 function main {
-  pkg ensure textproc/py27-cElementTree textproc/py-cElementTree
+  pkg ensure textproc/py35-cElementTree textproc/py-cElementTree
 
   block compile virtualenv
 
