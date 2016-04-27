@@ -9,8 +9,7 @@ function main {
   case "${1:-}" in
     add|remove)
       local nm_action="$1"; shift
-      local nm_image="$1"; shift
-      exec parity "$nm_action" "$nm_image" "$nm_image" "$@"
+      exec parity "$nm_action" "$@"
       ;;
     *)
       if [[ -x "$(which "parity-${1:-}" 2>&- || true)" ]]; then
