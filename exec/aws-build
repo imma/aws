@@ -4,24 +4,19 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   PATH="$shome/bin:$shome/exec:$PATH"
 
-  # region
-  local nm_region=
-  if [[ -n "${1:-}" ]]; then
-    nm_region="$1"; shift
-   AWS_DEFAULT_PROFILE="$nm_region"
-  fi
+  local nm_region="$(aws configure get region)"
+  export AWS_REGION="${nm_region}"
 
-  export AWS_DEFAULT_PROFILE
-  export BASEBOX_SUFFIX="-$AWS_DEFAULT_PROFILE"
+  export BASEBOX_SUFFIX="-${nm_region}"
 
   # target aminame
-  EC2_TARGET_AMI_NAME="packer-${AWS_DEFAULT_PROFILE}-$(date +%s)"
+  EC2_TARGET_AMI_NAME="packer-${nm_region}-$(date +%s)"
   export EC2_TARGET_AMI_NAME
 
   if [[ "$#" -gt 0 ]]; then
     EC2_INSTANCE_TYPE="$1"; shift
   else
-    case "$AWS_DEFAULT_PROFILE" in
+    case "$nm_region" in
       sa-east-1)
         EC2_INSTANCE_TYPE='c3.large'
         ;;
@@ -35,7 +30,7 @@ function main {
   # source ami
   source "$shome/script/aws_ami"
 
-  eval EC2_SOURCE_AMI="\$${AWS_DEFAULT_PROFILE//-/_}"
+  eval EC2_SOURCE_AMI="\$${nm_region//-/_}"
   export EC2_SOURCE_AMI
 
   # build it
