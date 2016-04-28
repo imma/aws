@@ -27,11 +27,7 @@ function main {
   fi
   export EC2_INSTANCE_TYPE
 
-  # source ami
-  source "$shome/script/aws_ami"
-
-  eval EC2_SOURCE_AMI="\$${nm_region//-/_}"
-  export EC2_SOURCE_AMI
+  export EC2_SOURCE_AMI="$(aws ami)"
 
   # build it
   exec parity build ubuntu "$@"
