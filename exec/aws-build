@@ -16,14 +16,7 @@ function main {
   if [[ "$#" -gt 0 ]]; then
     EC2_INSTANCE_TYPE="$1"; shift
   else
-    case "$nm_region" in
-      sa-east-1)
-        EC2_INSTANCE_TYPE='c3.large'
-        ;;
-      *)
-        EC2_INSTANCE_TYPE='c4.large'
-        ;;
-    esac
+    EC2_INSTANCE_TYPE="m3.medium"
   fi
   export EC2_INSTANCE_TYPE
 
