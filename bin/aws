@@ -1,24 +1,10 @@
 #!/usr/bin/env bash
 
-export VAGRANT_DEFAULT_PROVIDER="aws"
-
 function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  case "${1:-}" in
-    add|remove)
-      local nm_action="$1"; shift
-      exec parity "$nm_action" "$@"
-      ;;
-    *)
-      if [[ -x "$(which "parity-${1:-}" 2>&- || true)" ]]; then
-        exec parity "$@"
-      else
-        exec "$shome/vendor/virtualenv/bin/aws" "$@"
-      fi
-      ;;
-  esac
+  exec "$shome/vendor/virtualenv/bin/aws" "$@"
 }
 
 source sub "$0" "$@"
