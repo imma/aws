@@ -3,7 +3,7 @@
 # see https://docs.aws.amazon.com/cli/latest/topic/config-vars.html
 
 function profile {
-  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  local shome="${_aws_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/exec:$PATH"
   
   export AWS_DEFAULT_OUTPUT='json'
