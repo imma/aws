@@ -7,5 +7,4 @@ function main {
   exec "$shome/vendor/virtualenv/bin/aws" "$@"
 }
 
-export SUB_MIDDLEWARE="aws"
-source sub "$BASH_SOURCE" "$@"
+source sub-chain "$BASH_SOURCE" "$@"
