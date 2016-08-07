@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+if [[ -n "${CONTEXT_REGION:-}" ]]; then
+	export AWS_DEFAULT_REGION="${CONTEXT_REGION}"
+	export CONTEXT_REGION="${CONTEXT_REGION#aws-}"
+	export AWS_PROFILE="${CONTEXT_ORG:+$CONTEXT_ORG-}${CONTEXT_ENV:+$CONTEXT_ENV-}${CONTEXT_REGION}"
+fi
+
 function main {
   local shome="${_aws_home:-"$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"}"
   source "$shome/script/profile"
