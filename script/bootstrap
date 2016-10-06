@@ -3,6 +3,8 @@
 set -efu
 
 function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+
   pkg ensure textproc/py35-cElementTree textproc/py-cElementTree
 
   block compile virtualenv
