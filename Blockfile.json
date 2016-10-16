@@ -3,6 +3,7 @@
     "pkgsrc",
     "context",
     "parity",
-    "python"
+    "python",
+    "node"
   ]
 }
