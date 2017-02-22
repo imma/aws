@@ -8,7 +8,7 @@ function main {
   pkg ensure textproc/py35-cElementTree textproc/py-cElementTree
 
   block compile virtualenv
-  block compile npm
+  block compile yarn
   ln -nfs ../node_modules/.bin/assume-aws-role "$shome/bin/"
 }
 
