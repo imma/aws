@@ -5,8 +5,6 @@ set -efu
 function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
 
-  pkg ensure textproc/py36-cElementTree textproc/py-cElementTree
-
   block compile virtualenv
   block compile yarn
   ln -nfs ../node_modules/.bin/assume-aws-role "$shome/bin/"
