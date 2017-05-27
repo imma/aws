@@ -9,7 +9,11 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  exec "$shome/vendor/virtualenv/bin/aws" "$@"
+  if [[ -x "$shome/vendor/virtualenv/bin/aws" ]]; then
+    exec "$shome/vendor/virtualenv/bin/aws" "$@"
+  fi
+
+  false
 }
 
 source sub-chain "$BASH_SOURCE" "$@"
