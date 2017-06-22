@@ -7,7 +7,7 @@ function _aws_profile {
   PATH="$shome/bin:$PATH"
   
   export AWS_DEFAULT_OUTPUT='json'
-  AWS_VERSION='1.11.109'
+  AWS_VERSION='1.11.110'
 }
 
 _aws_profile
