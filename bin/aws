@@ -13,7 +13,12 @@ function main {
     exec "$shome/vendor/virtualenv/bin/aws" "$@"
   fi
 
-  exec /usr/bin/aws "$@"
+  if [[ -x /usr/bin/aws ]]; then
+    exec /usr/bin/aws "$@"
+  else
+    echo "ERROR: aws not installed"
+    return 1
+  fi
 }
 
 source sub-chain "$BASH_SOURCE" "$@"
