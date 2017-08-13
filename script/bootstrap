@@ -6,7 +6,6 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
 
   block compile virtualenv
-  block compile yarn
   rm -f "$shome/bin/assume-aws-role"
   rm -rf "$shome/node_modules"
 }
