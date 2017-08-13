@@ -5,6 +5,7 @@ set -efu
 function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
 
+  rm -f "$shome/vendor/virtualenv/bin/python3.6"
   block compile virtualenv
   rm -f "$shome/bin/assume-aws-role"
   rm -rf "$shome/node_modules"
