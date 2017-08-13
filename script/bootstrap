@@ -7,7 +7,8 @@ function main {
 
   block compile virtualenv
   block compile yarn
-  ln -nfs ../node_modules/.bin/assume-aws-role "$shome/bin/"
+  rm -f "$shome/bin/assume-aws-role"
+  rm -rf "$shome/node_modules"
 }
 
 main "$@"
