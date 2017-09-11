@@ -7,7 +7,6 @@ function _aws_profile {
   PATH="$shome/bin:$PATH"
   
   export AWS_DEFAULT_OUTPUT='json'
-  AWS_VERSION="$(cat "$shome/.awscli-version.json" | jq -r '.[].version')"
 }
 
 _aws_profile
