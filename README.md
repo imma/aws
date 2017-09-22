@@ -1,1 +1,1 @@
-Visit http://defn.sh/aws/ or open `docs/index.html`
+content/aws.md
