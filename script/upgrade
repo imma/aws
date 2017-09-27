@@ -8,7 +8,7 @@ function main {
 
   cd "$shome"
   "$shome/vendor/virtualenv/bin/pip" install --upgrade -r <(cat "$pth_requirements" | cut -d= -f1)
-  "$shome/vendor/virtualenv/bin/pip" freeze | tee "$pth_requirements.txt"
+  "$shome/vendor/virtualenv/bin/pip" freeze | tee "$pth_requirements"
 }
 
 main "$@"
