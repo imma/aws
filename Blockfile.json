@@ -4,6 +4,12 @@
     "context",
     "parity",
     "python",
-    "node"
+    "node",
+    [
+      "aws-vault",
+      "chamber",
+      "awless",
+      "credstash"
+    ]
   ]
 }
