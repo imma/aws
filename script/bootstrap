@@ -7,7 +7,7 @@ function main {
   block compile pipenv36 "$@"
   local pth_aws="$(pipenv36 run which aws)"
   mkdir -p "$shome/bin"
-  (set +f; cd bin && ln -nfs "$pth_aws" "$pth_aws"-* . )
+  (set +f; cd bin && ln -nfs "$pth_aws" awscli )
 }
 
 main "$@"
