@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+if [[ -n "${CONTEXT_REGION:-}" ]]; then
+	export AWS_DEFAULT_REGION="${CONTEXT_REGION}"
+	export CONTEXT_REGION="${CONTEXT_REGION#aws-}"
+fi
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  if [[ -x "$shome/bin/awscli" ]]; then
+    exec "$shome/bin/awscli" "$@"
+  fi
+
+  if [[ -x /usr/bin/aws ]]; then
+    exec /usr/bin/aws "$@"
+  else
+    echo "ERROR: aws not installed"
+    return 1
+  fi
+}
+
+source sub-chain "$BASH_SOURCE" "$@"
