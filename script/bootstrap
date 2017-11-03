@@ -4,8 +4,8 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  block compile pipenv36 "$@"
-  local pth_aws="$(pipenv36 run which aws)"
+  block compile pipenv "$@"
+  local pth_aws="$(pipenv run which aws)"
   mkdir -p "$shome/bin"
   (set +f; cd bin && ln -nfs "$pth_aws" awscli )
 }
