@@ -5,7 +5,11 @@ function version {
   source "$shome/script/profile"
 
   local ver_aws="$(aws --version  | awk '{print $1}' | cut -d/ -f2 || true)"
-  jq -n --arg aws "$ver_aws" '{aws: $aws}'
+  local ver_aws_encryption="$(aws-encryption-cli --version 2>/dev/null | awk '{print $1}' | cut -d/ -f2 || true)"
+  jq -n \
+    --arg aws "$ver_aws" \
+    --arg aws_encryption "$ver_aws_encryption" \
+    '{aws: $aws, aws_encryption: $aws_encryption}'
 }
 
 version "$@"

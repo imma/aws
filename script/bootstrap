@@ -5,9 +5,9 @@ function main {
   source "$shome/script/profile"
 
   block compile pipenv "$@"
-  local pth_aws="$(pipenv run which aws)"
   mkdir -p "$shome/bin"
-  (set +f; cd bin && ln -nfs "$pth_aws" awscli )
+  (set +f; cd bin && ln -nfs "$(pipenv run which aws)" awscli )
+  (set +f; cd bin && ln -nfs "$(pipenv run which aws-encryption-cli)" .)
 }
 
 main "$@"

@@ -8,6 +8,7 @@ name = "pypi"
 [packages]
 
 awscli = "*"
+aws-encryption-sdk-cli = "*"
 
 
 [dev-packages]
