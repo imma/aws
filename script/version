@@ -6,10 +6,12 @@ function version {
 
   local ver_aws="$(aws --version  | awk '{print $1}' | cut -d/ -f2 || true)"
   local ver_aws_encryption="$(aws-encryption-cli --version 2>/dev/null | awk '{print $1}' | cut -d/ -f2 || true)"
+  local ver_aws_mobile="$(awsmobile --version 2>/dev/null | xargs -- echo | awk '{print $1}')"
   jq -n \
     --arg aws "$ver_aws" \
     --arg aws_encryption "$ver_aws_encryption" \
-    '{aws: $aws, aws_encryption: $aws_encryption}'
+    --arg aws_mobile "$ver_aws_mobile" \
+    '{aws: $aws, aws_encryption: $aws_encryption, aws_mobile: $aws_mobile}'
 }
 
 version "$@"

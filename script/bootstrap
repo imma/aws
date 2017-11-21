@@ -4,10 +4,15 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  block compile pipenv "$@"
+  cd "$shome"
   mkdir -p "$shome/bin"
-  (set +f; cd bin && ln -nfs "$(pipenv run which aws)" awscli )
-  (set +f; cd bin && ln -nfs "$(pipenv run which aws-encryption-cli)" .)
+  
+  block compile pipenv
+  (cd bin && ln -nfs "$(pipenv run which aws)" awscli )
+  (cd bin && ln -nfs "$(pipenv run which aws-encryption-cli)" .)
+
+  block compile yarn
+  (set +f; cd bin; ln -nfs ../node_modules/.bin/awsmobile* .)
 }
 
 main "$@"
