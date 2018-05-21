@@ -4,7 +4,7 @@
 
 function _aws_profile {
   local shome="${_aws_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
-  PATH="$shome/bin:$PATH"
+  PATH="$shome/bin:$shome/exec:$PATH"
   
   export AWS_DEFAULT_OUTPUT='json'
 }
