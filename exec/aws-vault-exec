@@ -5,7 +5,7 @@ function main {
   source "$shome/script/profile"
   source normalize
 
-  exec /usr/local/bin/aws-vault exec "$@"
+  exec $shome/../aws-vault/bin/aws-vault exec "$@"
 }
 
 source sub "$BASH_SOURCE" "$@"
