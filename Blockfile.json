@@ -7,9 +7,8 @@
     "node",
     [
       "aws-vault",
-      "chamber",
-      "awless",
-      "credstash"
+      "aws-okta",
+      "chamber"
     ]
   ],
   "versions": {}
