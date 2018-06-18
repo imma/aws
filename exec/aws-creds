@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  export AWS_ACCESS_KEY_ID="$(aws --profile "$AWS_PROFILE" configure get aws_access_key_id)"
+  export AWS_SECRET_ACCESS_KEY="$(aws --profile "$AWS_PROFILE" configure get aws_secret_access_key)"
+  exec "$@"
+}
+
+source sub "$BASH_SOURCE" "$@"

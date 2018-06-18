@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  for a in AWS_CONFIG_FILE AWS_PROFILE AWS_DEFAULT_OUTPUT AWS_DEFAULT_REGION; do
+    if [[ -n "${!a:-}" ]]; then
+      printf 'export %q="%q"\n' "$a" "${!a}"
+    fi
+  done
+}
+
+source sub "$BASH_SOURCE" "$@"

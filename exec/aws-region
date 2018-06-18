@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+CONTEXT_REGION="${BASH_SOURCE##*/aws-}"
+
+exec aws-mw-region "$CONTEXT_REGION" "$@"

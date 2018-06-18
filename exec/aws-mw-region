@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+export AWS_DEFAULT_REGION="$1"
+export AWS_REGION="$1"
+
+shift
+
+if [[ "${BASH_SOURCE[0]}" == "${0}" ]]; then
+  source sub-middleware "$BASH_SOURCE" "$@"
+fi
