@@ -8,7 +8,8 @@
     [
       "aws-vault",
       "okta",
-      "chamber"
+      "chamber",
+      "awless"
     ]
   ],
   "versions": {}
