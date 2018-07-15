@@ -5,11 +5,8 @@
     "parity",
     "python",
     "node",
-    [
-      "okta",
-      "chamber",
-      "awless"
-    ]
+    "chamber",
+    "awless"
   ],
   "versions": {}
 }
