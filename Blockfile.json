@@ -6,7 +6,6 @@
     "python",
     "node",
     [
-      "aws-vault",
       "okta",
       "chamber",
       "awless"
